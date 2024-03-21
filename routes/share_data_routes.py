@@ -24,6 +24,7 @@ def create_Data():
         src=data_json['src'],
         title=data_json['title'],
         content=data_json['content'],
+        createUser=data_json['createUser'],
         type=data_json['type'],
     )
     db.session.add(new_data)

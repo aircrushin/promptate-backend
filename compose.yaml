@@ -13,6 +13,9 @@ services:
       context: .
     ports:
       - 5000:5000
+    volumes:
+      - /server/instance/promptate.db:/app/promptate.db
+    command: ["sh", "-c", "chmod 664 /app/promptate.db && python app.py"]
 
 # The commented out section below is an example of how to define a PostgreSQL
 # database that your application can use. `depends_on` tells Docker Compose to
