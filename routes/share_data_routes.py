@@ -29,7 +29,7 @@ def create_Data():
     )
     db.session.add(new_data)
     db.session.commit()
-    return jsonify(new_data.to_dict()), 201
+    return jsonify(new_data.to_dict()), 200
 
 #删除一条数据
 @share_data_blueprint.route('/api/shareData/<int:id>', methods=['DELETE'])
@@ -38,3 +38,14 @@ def delete_data(id):
     db.session.delete(data)
     db.session.commit()
     return jsonify({'message': 'Data deleted'})
+
+#更新一条数据
+@share_data_blueprint.route('/api/shareData/<int:id>', methods=['PUT'])
+def update_data(id):
+    data = ShareData.query.get_or_404(id)
+    data_json = request.json
+    data.title = data_json['title']
+    data.content = data_json['content']
+    data.type = data_json['type']
+    db.session.commit()
+    return jsonify(data.to_dict())

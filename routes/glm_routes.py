@@ -81,15 +81,15 @@ def translation():
         return jsonify({'error': 'No user-content provided'}), 400
 
     contentPrompt = prompt_translation
+    userPrompt = " 我要翻译的文字是： " + user_content + " "
 
     completion = client.chat.completions.create(
         model='glm-4',
         messages=[
             {"role": "system", "content": contentPrompt},
-            {"role": "user", "content": user_content}
+            {"role": "user", "content": userPrompt}
         ],
         max_tokens=200,
-        temperature=0.1,
     )
 
     # 将 ChatCompletionMessage 对象转换为可序列化的格式

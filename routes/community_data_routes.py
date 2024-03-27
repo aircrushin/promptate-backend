@@ -22,7 +22,7 @@ def create_comData():
     )
     db.session.add(new_data)
     db.session.commit()
-    return jsonify(new_data.to_dict()), 201
+    return jsonify(new_data.to_dict()), 200
 
 # 查询一条数据
 @community_data_blueprint.route('/api/communityData/<int:id>', methods=['GET'])

@@ -30,7 +30,7 @@ def create_data():
     )
     db.session.add(new_data)
     db.session.commit()
-    return jsonify(new_data.to_dict()), 201
+    return jsonify(new_data.to_dict()), 200
 
 #更新一条数据
 @data_blueprint.route('/api/data/<int:id>', methods=['PUT'])
