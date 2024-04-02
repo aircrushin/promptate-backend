@@ -1,5 +1,7 @@
 # database.py
 from extensions import db
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 from datetime import datetime
 
 class Data(db.Model):
@@ -13,6 +15,7 @@ class Data(db.Model):
 
     def to_dict(self):
         return {
+            'id': self.id,
             'keyWord': self.keyWord,
             'type': self.type,
             'detail': self.detail,
@@ -21,19 +24,27 @@ class Data(db.Model):
             'varNum': self.varNum
         }
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
-    password = db.Column(db.String(120), nullable=False)
-    is_admin = db.Column(db.Boolean, default=False, nullable=False)
+    password = db.Column(db.String(128))
+    is_admin = db.Column(db.Boolean, default=False)
+
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
+
+    def get_id(self):
+        return str(self.id)
 
     def to_dict(self):
         return {
             'id': self.id,
-            'username': self.username
-            # 注意：不要返回密码
+            'username': self.username,
+            'is_admin': self.is_admin
         }
-
 class CommunityData(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     src = db.Column(db.String(255))
@@ -43,6 +54,7 @@ class CommunityData(db.Model):
 
     def to_dict(self):
         return {
+            'id': self.id,
             'src': self.src,
             'title': self.title,
             'content': self.content,
@@ -60,6 +72,7 @@ class ShareData(db.Model):
 
     def to_dict(self):
         return {
+            'id': self.id,
             'src': self.src,
             'title': self.title,
             'content': self.content,
