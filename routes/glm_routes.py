@@ -12,15 +12,16 @@ def generate_prompt():
         return jsonify({'error': 'No user-content provided'}), 400
 
     contentPrompt = prompt_generator
+    userPrompt = 'input:' + user_content
 
     completion = client.chat.completions.create(
         model='glm-4',
         messages=[
             {"role": "system", "content": contentPrompt},
-            {"role": "user", "content": user_content}
+            {"role": "user", "content": userPrompt}
         ],
-        max_tokens=150,
-        temperature=0.5,
+        max_tokens=100,
+        temperature=0.1,
     )
 
     # 将 ChatCompletionMessage 对象转换为可序列化的格式
@@ -42,7 +43,7 @@ def optimize():
             {"role": "system", "content": contentPrompt},
             {"role": "user", "content": user_content}
         ],
-        max_tokens=150,
+        max_tokens=100,
         temperature=0.5,
     )
 
