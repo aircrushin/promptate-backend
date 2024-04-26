@@ -1,5 +1,5 @@
 from zhipuai import ZhipuAI
-client = ZhipuAI(api_key="c87755766bf2af696e8fef3a715ff2f2.Vn5KXqmxFOgxig8K") # 请填写您�?己的APIKey
+client = ZhipuAI(api_key="c87755766bf2af696e8fef3a715ff2f2.Vn5KXqmxFOgxig8K")
 user_content = "帮我写一首诗"
 contentPrompt = "you are a helpful assistant"
 completion = client.chat.completions.create(
