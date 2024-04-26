@@ -6,3 +6,4 @@ openai==1.11.1
 Werkzeug==3.0.1
 gunicorn
 zhipuai
+flask_login==0.6.0
