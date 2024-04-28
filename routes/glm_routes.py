@@ -15,7 +15,7 @@ def generate_prompt():
     userPrompt = 'input:' + user_content
 
     completion = client.chat.completions.create(
-        model='glm-4',
+        model='glm-3-turbo-8602765858450333765',
         messages=[
             {"role": "system", "content": contentPrompt},
             {"role": "user", "content": userPrompt}

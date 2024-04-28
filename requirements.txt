@@ -1,9 +1,9 @@
-Flask==3.0.2
+Flask==3.0.3
 Flask_Cors==4.0.0
 Flask_JWT_Extended==4.6.0
+Flask_Login==0.6.3
 flask_sqlalchemy==3.1.1
-openai==1.11.1
-Werkzeug==3.0.1
-gunicorn
-zhipuai
-flask_login==0.6.0
+openai==1.23.6
+pymongo==4.6.3
+Werkzeug==3.0.2
+zhipuai==2.0.1

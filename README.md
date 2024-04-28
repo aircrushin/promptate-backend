@@ -1,22 +1,27 @@
 # 项目启动
-```
+
+```bash
 pip install -r requirements.txt
+
 python app.py
 ```
 
-# 更新依赖项
-```
+## 更新依赖项
+
+```bash
 pipreqs . --encoding=utf8 --force
 ```
 
-# Vercel.json
-```
+## Vercel.json
+
+```json
 {
   "rewrites": [{ "source": "/(.*)", "destination": "/app" }]
 }
 ```
 
-# docker
-```
+## docker
+
+```bash
 docker pull aircrushin/promptate:backend
 ```
